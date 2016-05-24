@@ -106,7 +106,7 @@ define(
 			},
 
 			addPlanetLabel : function(title, body3d){
-				var el = $('<div class="planetSpot" data-shown="true"><div class="planetLabel"><a href="www.google.com">'+title+'</a></div></div>').appendTo('body');
+				var el = $('<div class="planetSpot" data-shown="true"><div class="planetLabel"><a>'+"bob"+'</a></div></div>').appendTo('body');
 
 				labels.push({
 					el : el,
