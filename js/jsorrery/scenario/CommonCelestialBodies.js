@@ -11,7 +11,7 @@ define(
 	function($, ns, MoonRealOrbit){
 		var common = {
 			sun : {
-				title : 'Resume',
+				title : 'The Sun',
 				mass : 1.9891e30,
 				radius : 6.96342e5,
 				color : '#ffff00',
