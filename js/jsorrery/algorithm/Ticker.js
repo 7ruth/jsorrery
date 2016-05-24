@@ -19,7 +19,7 @@ define(
 		var deltaTIncrement = 1;
 		var bodies = [];
 		var integration;
-		
+
 		var setDT = function (){
 			if(!calculationsPerTick || !secondsPerTick) return;
 			if(secondsPerTick < calculationsPerTick) {
@@ -30,7 +30,7 @@ define(
 			deltaTIncrement = Math.round(secondsPerTick / actualCalculationsPerTick);
 			secondsPerTick = deltaTIncrement * actualCalculationsPerTick;
 		};
-		
+
 		var moveByGravity = function(epochTime){
 			for(var t=1; t <= actualCalculationsPerTick; t++){
 				integration.moveBodies(epochTime + (t * deltaTIncrement), deltaTIncrement);
@@ -38,13 +38,15 @@ define(
 		};
 
 		var moveByElements = function(epochTime){
+
+			// console.log(bodies.length);
 			for(var i=0; i<bodies.length; i++){
 				bodies[i].setPositionFromDate(epochTime, false);
 			}
 		};
 
 		var Ticker = {
-			
+
 			tick : function(computePhysics, epochTime){
 				if(computePhysics){
 					moveByGravity(epochTime - secondsPerTick);
@@ -55,14 +57,16 @@ define(
 				for(var i=0; i<bodies.length; i++){
 					bodies[i].afterTick(secondsPerTick, !computePhysics);
 				}/**/
-				
+
 				return secondsPerTick;
 			},
-			
+
 			setBodies : function(b){
 				bodies.length = 0;
-				_.each(b, function(body, name){
-					bodies.push(body);
+
+				bodies = b.map(function(body){
+					return body;
+
 				});
 				integration = Quadratic.init(bodies);
 			},
@@ -71,7 +75,7 @@ define(
 				calculationsPerTick = n || calculationsPerTick;
 				setDT();
 			},
-			
+
 			setSecondsPerTick : function(s) {
 				secondsPerTick = s;
 				setDT();
@@ -83,6 +87,6 @@ define(
 		};
 
 		return Ticker;
-	
+
 	}
 );

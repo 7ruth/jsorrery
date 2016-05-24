@@ -39,7 +39,11 @@ define(
 			},
 
 			setPositionFromDate : function(epochTime, calculateVelocity) {
+<<<<<<< HEAD
 
+=======
+				// console.log(epochTime);
+>>>>>>> 2a4fc95d538b0ca56dd4a26474eafb635732a492
 				epochTime = this.getEpochTime(epochTime);
 				this.position = this.isCentral ? new THREE.Vector3() : this.orbitalElements.getPositionFromElements(this.orbitalElements.calculateElements(epochTime));
 				this.relativePosition = new THREE.Vector3();
@@ -65,12 +69,21 @@ define(
 				return 0;
 			},
 
+<<<<<<< HEAD
 			afterInitialized : function(){
 
 				this.previousRelativePosition = this.position.clone();
 
 				this.positionRelativeTo();
 
+=======
+			afterInitialized : function(isSetRelativeTo){
+				// console.log(this.title);
+				if(isSetRelativeTo) {
+					this.previousRelativePosition = this.position.clone();
+					this.positionRelativeTo();
+				}
+>>>>>>> 2a4fc95d538b0ca56dd4a26474eafb635732a492
 				if(this.customInitialize) this.customInitialize();
 				
 				if(this.customAfterTick) this.customAfterTick(ns.U.epochTime, ns.U.date);
@@ -78,6 +91,10 @@ define(
 
 			positionRelativeTo : function(){
 				if(this.relativeTo) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2a4fc95d538b0ca56dd4a26474eafb635732a492
 					var central = ns.U.getBody(this.relativeTo);
 					if(central && central!==ns.U.getBody()/**/) {
 						this.position.add(central.position);

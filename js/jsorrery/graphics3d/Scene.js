@@ -16,7 +16,7 @@ define(
 		'vendor/jquery.mousewheel',
 		'three/stats',
 		'_'
-	], 
+	],
 	function(ns, $, Body3D, MilkyWay, Sun, CameraManager, OrbitLinesManager, TracerManager, Labels, Dimensions, Gui, Screenshot){
 		'use strict';
 
@@ -33,7 +33,7 @@ define(
 				this.bodies3d = [];
 
 				this.container = $('<div id="universe" width="'+this.width+'" height="'+this.height+'">').appendTo('body');
-				this.root = new THREE.Scene();				
+				this.root = new THREE.Scene();
 
 				renderer = renderer || new THREE.WebGLRenderer({antialias: true, preserveDrawingBuffer: true});
 
@@ -51,10 +51,12 @@ define(
 				}
 
 				this.container.append(renderer.domElement);
-				
+
 				//planet scale
 				Gui.addSlider(Gui.PLANET_SCALE_ID, null, function(val){
-					_.each(this.bodies3d, function(body3d){
+
+					this.bodies3d.forEach(function(body3d){
+
 						body3d.setScale(val);
 					});
 					this.draw();
@@ -86,7 +88,7 @@ define(
 				sun.init();
 				var hasCelestial = this.centralBody && this.centralBody.name == 'sun';
 				sun.setLight(hasCelestial);
-				 
+
 				this.root.add(sun.getDisplayObject());
 
 			},
@@ -109,8 +111,10 @@ define(
 			},
 
 			draw : function(){
-				
-				_.each(this.bodies3d, drawBody);
+
+
+				this.bodies3d.forEach(drawBody);
+
 				//after all bodies have been positionned, update camera matrix (as camera might be attached to a body)
 				CameraManager.updateCameraMatrix();
 				var camPos = (CameraManager.getCamera().getAbsolutePos && CameraManager.getCamera().getAbsolutePos() ) || CameraManager.getCamera().position;
@@ -160,10 +164,12 @@ define(
 			addBody : function(celestialBody) {
 				var body3d = Object.create(Body3D);
 
+				// console.log(celestialBody);
+
 				body3d.init(celestialBody);
 				this.bodies3d.push(body3d);
 				body3d.setParentDisplayObject(this.root);
-				
+
 				CameraManager.addBody(body3d);
 				OrbitLinesManager.addBody(body3d);
 				TracerManager.addBody(body3d);
@@ -183,7 +189,9 @@ define(
 
 				var maxDim = central3d.maxScale * centralBody.radius*ns.KM;
 				var maxScaleVal = 0;
-				_.each(this.bodies3d, function(body3d){
+
+				this.bodies3d.forEach(function(body3d){
+
 					body3d.maxScale = (maxDim / (body3d.celestial.radius*ns.KM));
 					maxScaleVal = maxScaleVal > body3d.maxScale ? maxScaleVal : body3d.maxScale;
 				});
