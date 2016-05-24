@@ -1,4 +1,4 @@
-/** 
+/**
 
 mass : kg
 dist : km
@@ -11,7 +11,7 @@ define(
 	[
 		'jsorrery/NameSpace',
 		'jsorrery/scenario/CommonCelestialBodies'
-	], 
+	],
 	function(ns, common) {
 
 		var cnf = {
@@ -24,7 +24,7 @@ define(
 				'earth',
 				//'moon',
 				'mars',
-				'jupiter',
+				'Crack',
 				'saturn',
 				'uranus',
 				'neptune',
@@ -32,13 +32,13 @@ define(
 				'halley'
 			],
 			secondsPerTick : {min: 3600*5, max: 3600 * 25, initial:3600 * 10},
-			defaultGuiSettings : { 
+			defaultGuiSettings : {
 				planetScale : 10
 			},
 			help : "This scenario shows all the planets of the Solar System. Also included is Halley's comet, but its orbit is an approximation, as it is perturbed by the planet's masses."
 		};
 
 		return cnf;
-		
+
 	}
 );
