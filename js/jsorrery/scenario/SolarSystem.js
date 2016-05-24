@@ -18,8 +18,8 @@ define(
 			name : 'SolarSystem',
 			title : 'Solar System',
 			commonBodies : [
-				'Resume',
-				'Project #1',
+				'sun',
+				'mercury',
 				'venus',
 				'earth',
 				//'moon',

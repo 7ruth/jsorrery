@@ -5,7 +5,7 @@ define(
 		'jquery',
 		'jsorrery/graphics3d/CameraManager',
 		'jsorrery/graphics3d/Dimensions'
-	], 
+	],
 	function(ns, $, CameraManager, Dimensions) {
 		'use strict';
 
@@ -106,8 +106,8 @@ define(
 			},
 
 			addPlanetLabel : function(title, body3d){
-				var el = $('<div class="planetSpot" data-shown="true"><div class="planetLabel">'+title+'</div></div>').appendTo('body');
-				
+				var el = $('<div class="planetSpot" data-shown="true"><div class="planetLabel"><a href="www.google.com">'+title+'</a></div></div>').appendTo('body');
+
 				labels.push({
 					el : el,
 					callback : getPlanetLabelCallback(el, body3d)

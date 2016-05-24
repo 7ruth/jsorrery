@@ -11,7 +11,7 @@ define(
 	function($, ns, MoonRealOrbit){
 		var common = {
 			sun : {
-				title : 'The Sun',
+				title : 'Resume',
 				mass : 1.9891e30,
 				radius : 6.96342e5,
 				color : '#ffff00',
@@ -27,7 +27,7 @@ define(
 				radius:2439,
 				color : '#588a7b',
 				map : 'img/mercurymap.jpg',
-				orbit : { 
+				orbit : {
 					base : {a : 0.38709927 * ns.AU ,  e : 0.20563593, i: 7.00497902, l : 252.25032350, lp : 77.45779628, o : 48.33076593},
 					cy : {a : 0.00000037 * ns.AU ,  e : 0.00001906, i: -0.00594749, l : 149472.67411175, lp : 0.16047689, o : -0.12534081}
 				}
@@ -171,7 +171,7 @@ define(
 						M : 13.176358,//360 / 27.321582,
 						w : (360 / 5.997) / 365.25,
 						o : (360 / 18.600) / 365.25
-					}	
+					}
 				},
 				getMapRotation : function(angle){
 					if(angle > 0) {
